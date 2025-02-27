@@ -192,25 +192,21 @@
       <div class="row justify-content-center">
         <!-- First Card -->
         <div class="col-md-6 col-12 mb-4">
-          <div class="validate-card">
-            <img
-              src="{% static 'img/search-operator.jpg' %}"
-              alt="Search Operator"
-            />
-          </div>
-          <button class="btn validate-btn mt-3">Search Operator</button>
+            <div class="validate-card">
+                <img src="{% static 'img/search-operator.jpg' %}" alt="Search Operator" />
+            </div>
+            <a href="{% url 'track_operator' %}" class="btn validate-btn mt-3">Search Operator</a>
         </div>
+        
         <!-- Second Card -->
         <div class="col-md-6 col-12 mb-4">
-          <div class="validate-card">
-            <img
-              src="{% static 'img/search-certificate.jpg' %}"
-              alt="Search Certificates"
-            />
-          </div>
-          <button class="btn validate-btn mt-3">Search Certificates</button>
+            <div class="validate-card">
+                <img src="{% static 'img/search-certificate.jpg' %}" alt="Search Certificates" />
+            </div>
+            <a href="{% url 'track_equipment' %}" class="btn validate-btn mt-3">Search Certificates</a>
         </div>
-      </div>
+    </div>
+    
     </div>
 
     <footer class="footer bg-footer-custom text-white py-4 mt-5">

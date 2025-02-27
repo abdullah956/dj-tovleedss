@@ -2,17 +2,20 @@ from django.db import models
 from config.models import BasedModel
 
 
+from django.db import models
+
 class Certificate(BasedModel):
-    id_no = models.CharField(max_length=20, unique=True)
-    name = models.CharField(max_length=255)
-    s_office = models.CharField(max_length=255)
-    ts_no = models.CharField(max_length=255)
-    company = models.CharField(max_length=255)
-    id_iqama_no = models.CharField(max_length=50)
+    card_no = models.CharField(max_length=10, unique=True)
+    certificate_no = models.CharField(max_length=10, unique=True)
+    operator_name = models.CharField(max_length=100)
+    company = models.CharField(max_length=150)
+    operator_trade = models.CharField(max_length=100)
+    iqama_number = models.CharField(max_length=15, unique=True)
     issue_date = models.DateField()
-    valid_until = models.DateField()
-    details = models.TextField()
-    photo = models.ImageField(upload_to='', blank=True, null=True)
+    expiry_date = models.DateField()
+    profile = models.ImageField(upload_to='operator_profiles/', blank=True, null=True)
+    undercard = models.BigIntegerField(unique=True, null=True, blank=True)  
+    remarks = models.TextField(blank=True, null=True)
 
     def __str__(self):
-        return self.name
+        return f"{self.operator_name} - {self.card_no}"

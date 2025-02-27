@@ -14,7 +14,6 @@
     
     <style>
         body {
-            /* text-align: center; */
             font-family: 'Mulish', Arial, Helvetica, sans-serif;
         }
         .logo {
@@ -32,28 +31,23 @@
         .btn-back {
             margin-top: 20px;
         }
-       
     </style>
 </head>
 <body>
 
     <div class="container-fluid text-center">
-         <!-- Logo -->
-    <img src="{% static 'img\toveleeds-big.png' %}" alt="Logo" class="logo">
-    
-    <!-- Title -->
-    <h2 class="mb-3">Tove Leeds App</h2>
-
-
+        <!-- Logo -->
+        <img src="{% static 'img/toveleeds-big.png' %}" alt="Logo" class="logo">
+        
+        <!-- Title -->
+        <h2 class="mb-3">Tove Leeds App</h2>
     </div>
-
-   
 
     <!-- Table -->
     <div class="container-fluid">
         <div class="table-responsive">
             <table class="table table-bordered text-left">
-                <thead class="table-white ">
+                <thead class="table-white">
                     <tr>
                         <th>CARD NO</th>
                         <th>OPERATOR NAME</th>
@@ -66,28 +60,30 @@
                     </tr>
                 </thead>
                 <tbody>
+                    {% for  certificate in certificates %}
                     <tr>
-                        <td>334123</td>
-                        <td>Hossain Bhuiyan</td>
-                        <td>Alpha Lifting Contracting Co</td>
-                        <td>Scaffolding Erector / Dismantler</td>
-                        <td>2501378430</td>
-                        <td>23/02/2025</td>
-                        <td>22/02/2026</td>
-                        <td class="text-left tick-sign"><i class="fa-solid fa-check text-success"></i></td>
+                        <td class="text-dark">{{ certificate.card_no }}</td>
+                        <td>{{ certificate.operator_name }}</td>
+                        <td>{{ certificate.company }}</td>
+                        <td>{{ certificate.operator_trade }}</td>
+                        <td>{{ certificate.iqama_number }}</td>
+                        <td>{{ certificate.issue_date }}</td>
+                        <td>{{ certificate.expiry_date }}</td>
+                        <td class="text-left tick-sign">
+                        
+                                <i class="fa-solid fa-check text-success"></i>
+                         
+                        </td>
                     </tr>
+                    {% endfor %}
                 </tbody>
             </table>
         </div>
 
         <div class="container justify-content-center text-center">
-             <!-- Back Button -->
-        <a href="" class="btn btn-primary btn-back">Back</a>
-
+            <!-- Back Button -->
+            <a href="" class="btn btn-primary btn-back">Back</a>
         </div>
-
-       
     </div>
-
 </body>
 </html>
