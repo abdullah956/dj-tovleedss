@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import generate_pdf, all_records_view ,search_operator,track_equipment,track_operator,validate_now, certificate_detail,certificate_form_view, certificate_list_view, download_certificate_pdf,login_view, signup_view, logout_view
+from .views import  all_records_view ,search_operator,track_equipment,track_operator,validate_now, certificate_detail,certificate_form_view, certificate_list_view, download_certificate_pdf,login_view, signup_view, logout_view
 
 urlpatterns = [
     path('form/', certificate_form_view, name='certificate_form'),
@@ -13,9 +13,5 @@ urlpatterns = [
     path('track_operator/', track_operator, name='track_operator'),
     path('track_equipment/', track_equipment, name='track_equipment'),
     path('search_operator/', search_operator, name='search_operator'),
-
-
     path("all/", all_records_view, name="all_records"),
-    
-    path("download-pdf/<int:certificate_id>/", generate_pdf, name="download_pdf"),
 ]
