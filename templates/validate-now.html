@@ -1,0 +1,323 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Validate Now</title>
+    <link rel="shortcut icon" href="{% static 'img/favicon.ico' %}" type="image/x-icon">
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Mulish:wght@300;400;600&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Font Awesome CDN -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+
+    <style>
+      body {
+        font-family: "Mulish", Arial, Helvetica, sans-serif;
+      }
+      .top-navbar {
+        background: white;
+        padding: 10px 0;
+      }
+      .bottom-navbar {
+        background: #0065b2e8; /* Matches reference */
+        padding: 8px 0; /* Adds vertical padding */
+      }
+      .navbar-nav {
+        width: 100%; /* Ensures full width */
+        display: flex;
+        justify-content: space-between; /* Spreads items */
+      }
+      .navbar-nav .nav-item {
+        flex-grow: 1; /* Ensures equal spacing */
+        text-align: center; /* Centers text */
+      }
+      .navbar-nav .nav-link {
+        color: white !important;
+        font-weight: 400;
+        font-size: 20px;
+        padding: 6px 0; /* Adjusts clickable area */
+      }
+      .navbar-toggler {
+        border-color: white;
+      }
+      /* Responsive adjustments */
+      @media (max-width: 991px) {
+        .navbar-nav {
+          flex-direction: column;
+          align-items: center;
+        }
+        .navbar-nav .nav-item {
+          width: 100%; /* Ensures full width on mobile */
+        }
+      }
+
+      .validate-section {
+        text-align: center;
+        padding: 40px 0px;
+      }
+      .validate-title {
+        font-size: 32px;
+        font-weight: 400;
+        margin-top: 60px;
+        margin-bottom: 40px;
+      }
+      .validate-card {
+        border: 1px solid #777777;
+        padding: 10px;
+        /* border-radius: 5px; */
+        text-align: center;
+        /* width: 500px; */
+      }
+      .validate-card img {
+        width: 100%;
+        height: auto;
+        /* border-radius: 5px; */
+      }
+      .validate-btn {
+        background-color: #0095da;
+        color: white;
+        font-size: 16px;
+        padding: 18px 25px;
+        border: none;
+        margin-top: 10px;
+        width: 100%;
+        max-width: 200px;
+        border-radius: 0px;
+      }
+      .validate-btn:hover {
+        background-color: #007bb5;
+      }
+
+      .bg-footer-custom {
+        background-color: #0065b2e8;
+      }
+      .footer-link {
+        display: block;
+        position: relative;
+        color: white;
+        text-decoration: none;
+        padding-bottom: 5px; /* Space between text and underline */
+        font-size: 16px;
+      }
+
+      .footer-link i{
+        font-size: 13px;
+      }
+      .footer-link::after {
+        content: "";
+        display: block;
+        width: 80%;
+        height: 1px;
+        background-color: white;
+        margin-top: 3px; /* Space between text and underline */
+      }
+
+      .footer-link:hover::after {
+        background-color: #ddd; /* Light effect on hover */
+      }
+
+      .footer-heading {
+        font-weight: bold;
+        margin-bottom: 10px;
+      }
+      .footer-font{
+        font-size: 12px;
+        font-weight: 500;
+        margin-bottom: 30px;
+        
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Top Navbar -->
+    <div
+      class="container top-navbar text-left mt-3 mb-3"
+      style="margin-left: 80px"
+    >
+      <img src="{% static 'img/logotov.png' %}" alt="Logo" height="125" />
+    </div>
+
+    <!-- Bottom Navbar -->
+    <nav class="navbar navbar-expand-lg bottom-navbar">
+      <div class="container-fluid">
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNav"
+          aria-controls="navbarNav"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav">
+            <li class="nav-item"><a class="nav-link" href="#">Home</a></li>
+            <li class="nav-item"><a class="nav-link" href="#">About Us</a></li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Calibration</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Inspection</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Certifications</a>
+            </li>
+            <li class="nav-item"><a class="nav-link" href="#">Training</a></li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Other Services</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Information</a>
+            </li>
+            <li class="nav-item"><a class="nav-link" href="#">Contact</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <div class="container validate-section">
+      <h2 class="validate-title">Validate Now</h2>
+      <div class="row justify-content-center">
+        <!-- First Card -->
+        <div class="col-md-6 col-12 mb-4">
+          <div class="validate-card">
+            <img
+              src="{% static 'img/search-operator.jpg' %}"
+              alt="Search Operator"
+            />
+          </div>
+          <button class="btn validate-btn mt-3">Search Operator</button>
+        </div>
+        <!-- Second Card -->
+        <div class="col-md-6 col-12 mb-4">
+          <div class="validate-card">
+            <img
+              src="{% static 'img/search-certificate.jpg' %}"
+              alt="Search Certificates"
+            />
+          </div>
+          <button class="btn validate-btn mt-3">Search Certificates</button>
+        </div>
+      </div>
+    </div>
+
+    <footer class="footer bg-footer-custom text-white py-4 mt-5">
+      <div class="container px-5 py-5">
+        <div class="row">
+          <!-- Contact Info -->
+          <div class="col-md-3">
+            <h6 class="footer-font">CONTACT INFO</h6>
+            <p class="mb-1">
+              First Floor, 6507 Umm al Hammam Road, (Near Hyper Panda) Riyadh
+              12321, KSA
+            </p>
+            <p class="mb-1">Phone: +966 56 353 9517</p>
+            <p class="mb-0">
+              Email:
+              <a href="mailto:info@toveleeds.com" class="text-white"
+                >info@toveleeds.com</a
+              >
+            </p>
+          </div>
+
+          <!-- Validate Now -->
+          <div class="col-md-3">
+            <h6 class="footer-font">VALIDATE NOW</h6>
+            <ul class="list-unstyled">
+              <li>
+                <a href="#" class="footer-link"
+                  ><i class="fa-solid fa-chevron-right me-2"></i>Equipment
+                  Validation</a
+                >
+              </li>
+              <li>
+                <a href="#" class="footer-link"
+                  ><i class="fa-solid fa-chevron-right me-2"></i>Operator
+                  Validation</a
+                >
+              </li>
+            </ul>
+          </div>
+
+          <!-- Useful Links -->
+          <div class="col-md-3">
+            <h6 class="footer-font">USEFUL LINKS</h6>
+            <ul class="list-unstyled">
+              <li>
+                <a href="#" class="footer-link"
+                  ><i class="fa-solid fa-chevron-right me-2"></i>Site Map</a
+                >
+              </li>
+              <li>
+                <a href="#" class="footer-link"
+                  ><i class="fa-solid fa-chevron-right me-2"></i>How We Use
+                  Cookies</a
+                >
+              </li>
+              <li>
+                <a href="#" class="footer-link"
+                  ><i class="fa-solid fa-chevron-right me-2"></i>My Leeds
+                  Admin</a
+                >
+              </li>
+              <li>
+                <a href="#" class="footer-link"
+                  ><i class="fa-solid fa-chevron-right me-2"></i>My Leeds
+                  Clients</a
+                >
+              </li>
+            </ul>
+          </div>
+
+          <!-- Get Social -->
+          <div class="col-md-3">
+            <h6 class="footer-font">GET SOCIAL</h6>
+            <div class="d-flex gap-2">
+              <a href="#" class="text-white"
+                ><img
+                  src="{% static 'img/facebook.png' %}"
+                  alt="Facebook"
+                  width="32"
+              /></a>
+              <a href="#" class="text-white"
+                ><img
+                  src="{% static 'img/twitter.png' %}"
+                  alt="Twitter"
+                  width="32"
+              /></a>
+              <a href="#" class="text-white"
+                ><img
+                  src="{% static 'img/linkedin.png' %}"
+                  alt="LinkedIn"
+                  width="32"
+              /></a>
+              <a href="#" class="text-white"
+                ><img src="{% static 'img/email.png' %}" alt="Email" width="32"
+              /></a>
+              <a href="#" class="text-white"
+                ><img
+                  src="{% static 'img/folder-2.png.webp' %}"
+                  alt="folder"
+                  width="32"
+              /></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>

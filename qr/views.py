@@ -110,3 +110,16 @@ from .models import Certificate
 def certificate_detail(request, id):
     certificate = get_object_or_404(Certificate, id=id)
     return render(request, 'certificate_detail.html', {'certificate': certificate})
+
+
+def validate_now (request):
+    return render(request,"validate-now.html")
+
+def track_operator (request):
+    return render(request,"track_operator.html")
+
+def track_equipment (request):
+    return render(request,"track_equipment.html")
+
+def search_operator (request):
+    return render(request,"search_operator.html")
