@@ -152,3 +152,53 @@ def track_operator(request):
 
 def search_operator (request):
     return render(request,"search_operator.html")
+
+
+from django.shortcuts import render, get_object_or_404
+from django.http import HttpResponse
+from django.template.loader import get_template
+from xhtml2pdf import pisa
+from .models import Certificate
+
+def all_records_view(request):
+    """View to display all certificate records."""
+    certificates = Certificate.objects.all()
+    return render(request, "all_records.html", {"certificates": certificates})
+
+
+
+import qrcode
+from io import BytesIO
+from django.shortcuts import render, get_object_or_404
+from django.http import HttpResponse
+from django.template.loader import get_template
+from xhtml2pdf import pisa
+from .models import Certificate
+
+def generate_pdf(request, certificate_id):
+    certificate = get_object_or_404(Certificate, id=certificate_id)
+    domain_url = "http://127.0.0.1:8000/"  # Replace with your actual domain
+
+    # Generate QR Code
+    qr = qrcode.make(domain_url)
+    qr_io = BytesIO()
+    qr.save(qr_io, format='PNG')
+    qr_image = qr_io.getvalue()
+
+    context = {
+        "certificate": certificate,
+        "qr_image": qr_image,
+    }
+
+    template_path = "pdf_template.html"
+    template = get_template(template_path)
+    html = template.render(context)
+
+    response = HttpResponse(content_type="application/pdf")
+    response["Content-Disposition"] = f'attachment; filename="certificate_{certificate.card_no}.pdf"'
+
+    pisa_status = pisa.CreatePDF(html, dest=response)
+    if pisa_status.err:
+        return HttpResponse("Error generating PDF", status=500)
+    
+    return response
