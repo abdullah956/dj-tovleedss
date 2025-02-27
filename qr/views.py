@@ -22,7 +22,7 @@ def certificate_form_view(request):
     else:
         form = CertificateForm()
     
-    return render(request, "certificate_form", {"form": form})
+    return render(request, "certificate_form.html", {"form": form})
 
 def certificate_list_view(request):
     certificates = Certificate.objects.all()
