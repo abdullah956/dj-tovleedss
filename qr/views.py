@@ -116,7 +116,7 @@ def certificate_detail(request, id):
 def validate_now (request):
     return render(request,"validate-now.html")
 
-def track_operator (request):
+def track_equipment (request):
     if request.method == "GET":
         card_no = request.GET.get("cardNo", "").strip()
         certificate_no = request.GET.get("iqamaNumber", "").strip()
@@ -131,27 +131,24 @@ def track_operator (request):
 
     return render(request, "track_equipment.html")  
 
-def track_equipment (request):
-    return render(request,"track_equipment.html")
+def track_operator(request):
+    certificates = None
+    message = None
 
-def search_operator (request):
-    return render(request,"search_operator.html")
-
-
-from django.shortcuts import render
-
-
-def search_data(request):
     if request.method == "GET":
         card_no = request.GET.get("cardNo", "").strip()
-        certificate_no = request.GET.get("iqamaNumber", "").strip()
+        iqama_number = request.GET.get("iqamaNumber", "").strip()
 
-        if card_no or certificate_no:
-            certificates = Certificate.objects.filter(card_no=card_no, certificate_no=certificate_no)
-
+        if card_no or iqama_number:
+            certificates = Certificate.objects.filter(card_no=card_no, iqama_number=iqama_number)
+            
             if certificates.exists():
                 return render(request, "search_operator.html", {"certificates": certificates})
             else:
                 return render(request, "search_operator.html", {"message": "No records found."})
 
-    return render(request, "search_operator.html")  # Replace 'search.html' with your actual template name
+    return render(request, "track_operator.html", {"certificates": certificates, "message": message})
+
+
+def search_operator (request):
+    return render(request,"search_operator.html")

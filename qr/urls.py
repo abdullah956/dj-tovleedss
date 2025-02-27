@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import search_data,search_operator,track_equipment,track_operator,validate_now, certificate_detail,certificate_form_view, certificate_list_view, download_certificate_pdf,login_view, signup_view, logout_view
+from .views import search_operator,track_equipment,track_operator,validate_now, certificate_detail,certificate_form_view, certificate_list_view, download_certificate_pdf,login_view, signup_view, logout_view
 
 urlpatterns = [
     path('form/', certificate_form_view, name='certificate_form'),

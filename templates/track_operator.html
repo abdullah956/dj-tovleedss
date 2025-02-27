@@ -101,26 +101,20 @@
       />
       <h2 class="mb-5" style="font-size: 40px">Tove Leeds App</h2>
 
-      <form class="mt-2">
+      <form class="mt-2" method="GET" action="{% url 'track_operator' %}">
         <div class="mb-5 text-start">
-          <label for="cardNo" class="form-label fw-bold" style="font-size: 18px"
-            >CARD NO.</label
-          >
-          <input type="text" class="form-control" id="cardNo" />
+            <label for="cardNo" class="form-label fw-bold" style="font-size: 18px">CARD NO.</label>
+            <input type="text" class="form-control" id="cardNo" name="cardNo" />
         </div>
-
+    
         <div class="mb-4 text-start">
-          <label
-            for="iqamaNumber"
-            class="form-label fw-bold"
-            style="font-size: 18px"
-            >IQAMA NUMBER</label
-          >
-          <input type="text" class="form-control" id="iqamaNumber" />
+            <label for="iqamaNumber" class="form-label fw-bold" style="font-size: 18px">IQAMA NUMBER</label>
+            <input type="text" class="form-control" id="iqamaNumber" name="iqamaNumber" />
         </div>
-
+    
         <button type="submit" class="btn btn-primary w-100">Search</button>
-      </form>
+    </form>
+    
     </div>
   </body>
 </html>
