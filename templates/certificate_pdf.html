@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      max-width: 400px;
+      margin: 20px auto;
+      border: 1px solid #ccc;
+      padding: 20px;
+    }
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+    .photo {
+      width: 100px;
+      height: 120px;
+      border: 1px solid #ddd;
+    }
+    .logo {
+      width: 120px;
+    }
+    .info-row {
+      display: flex;
+      margin: 5px 0;
+    }
+    .label {
+      width: 100px;
+      font-weight: bold;
+    }
+    .blue-bar {
+      background-color: #009cc4;
+      color: white;
+      padding: 8px;
+      margin: 15px 0;
+    }
+    .qr-code {
+      width: 100px;
+      height: 100px;
+      position: absolute;
+      top: 20px;
+      right: 20px;
+    }
+    .footer {
+      margin-top: 20px;
+      font-size: 12px;
+    }
+    .contact-info {
+      margin-top: 15px;
+      font-size: 12px;
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <img class="photo" src="{{ photo_path }}" alt="ID Photo">
+    <img class="logo" src="" alt="Fahss Logo">
+    <div class="qr-code">
+      <img src="data:image/png;base64,{{ qr_code_data }}" alt="QR Code">
+    </div>
+  </div>
+
+  <div class="info-section">
+    <div class="info-row">
+      <span class="label">ID NO.</span>
+      <span>{{ certificate.id_no }}</span>
+    </div>
+    <div class="info-row">
+      <span class="label">Name:</span>
+      <span>{{ certificate.name }}</span>
+    </div>
+    <div class="info-row">
+      <span class="label">ID/Iqama No:</span>
+      <span>{{ certificate.id_iqama_no }} </span>
+    </div>
+    <div class="info-row">
+      <span class="label">Issue on:</span>
+      <span>{{ certificate.issue_date }}</span>
+    </div>
+    <div class="info-row">
+      <span class="label">Valid up to:</span>
+      <span>{{ certificate.valid_until }}</span>
+    </div>
+  </div>
+
+  <div class="blue-bar">
+    Has successfully completed the assessment and examination
+  </div>
+
+  <div class="details-section">
+    <div class="info-row">
+      <span class="label">Details:</span>
+      <span>{{ certificate.details }}  </span>
+    </div>
+  </div>
+
+  <div class="contact-info">
+    <p>For Card Verification</p>
+    <p>Tel Jubail: 013 340 7607</p>
+    <p>Fax Jubail: 013 340 7605</p>
+    <p>Tel Riyadh: 011 478 6214</p>
+    <p>Tel Jeddah: 012 610 9012</p>
+    <p>Tel Yanbu: 014 325 1475</p>
+    <p>Email: info@fahsstuv.com</p>
+    <p>www.fahsstuv.com</p>
+  </div>
+
+  <div class="blue-bar">
+    This card is issued by and remains the property of FAHSS/TUV
+  </div>
+</body>
+</html>

@@ -1,0 +1,28 @@
+<div class="col-md-6 col-lg-4 mb-4">
+    <div class="card shadow-sm">
+        <div class="card-body text-center">
+            {% if certificate.photo %}
+                <img src="{{ certificate.photo.url }}" class="certificate-photo" alt="Certificate Photo" />
+            {% endif %}
+            <h5 class="card-title">{{ certificate.name }}</h5>
+            <p class="card-text">
+                <strong>ID Number:</strong> {{ certificate.id_no }}
+            </p>
+            <p class="card-text">
+                <strong>ID/Iqama No:</strong> {{ certificate.id_iqama_no }}
+            </p>
+            <p class="card-text">
+                <strong>Issue Date:</strong> {{ certificate.issue_date }}
+            </p>
+            <p class="card-text">
+                <strong>Valid Until:</strong> {{ certificate.valid_until }}
+            </p>
+            <p class="card-text">
+                <strong>Details:</strong> {{ certificate.details }}
+            </p>
+        </div>
+        <div class="card-footer text-center">
+            <a href="{% url 'download_certificate_pdf' certificate.id %}" class="btn btn-secondary btn-sm">Click to Get Card</a>
+        </div>
+    </div>
+</div>
