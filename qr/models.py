@@ -14,8 +14,8 @@ class Certificate(BasedModel):
     issue_date = models.DateField()
     expiry_date = models.DateField()
     profile = models.ImageField(upload_to='operator_profiles/', blank=True, null=True)
-    undercard = models.BigIntegerField(unique=True, null=True, blank=True)  
-    remarks = models.TextField(blank=True, null=True)
+    undercard = models.CharField(max_length=150)
+    
 
     def __str__(self):
         return f"{self.operator_name} - {self.card_no}"

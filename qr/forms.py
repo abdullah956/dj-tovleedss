@@ -22,6 +22,6 @@ class CertificateForm(forms.ModelForm):
             "operator_trade": forms.TextInput(attrs={"class": "form-control"}),
             "iqama_number": forms.TextInput(attrs={"class": "form-control"}),
             "profile": forms.ClearableFileInput(attrs={"class": "form-control"}),
-            "undercard": forms.NumberInput(attrs={"class": "form-control"}),
-            "remarks": forms.Textarea(attrs={"class": "form-control"}),
+            "undercard": forms.TextInput(attrs={"class": "form-control"}),
+            
         }
