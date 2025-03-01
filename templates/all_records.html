@@ -23,7 +23,7 @@
       .text {
         position: absolute;
         color: #000;
-        font-size: 16px;
+        font-size: 20px;
         font-weight: normal;
       }
       .designation {
@@ -31,7 +31,7 @@
       }
       strong{
         font-family: 'Times New Roman', Times, serif;
-        font-size: 18px;
+        font-size: 20px;
       }
     </style>
   </head>
@@ -96,8 +96,9 @@
                     '{{ certificate.undercard }}',
                     '{% if certificate.profile %}{{ certificate.profile.url }}{% else %}{% static 'images/default_profile.png' %}{% endif %}',
                     '{% static 'img/qrr.png' %}',
-                    '{% static 'img/front.jpg' %}',
-                    '{% static 'img/back.jpg' %}'
+                    '{% static 'img/front.png' %}',
+                    '{% static 'img/back.jpg' %}',
+                    '{% static 'img/logotov.png'%}'
                 )"
             >
               Download
@@ -137,7 +138,8 @@
         profileUrl,
         qrrImage,
         frontImage,
-        backImage
+        backImage,
+        logo
       ) {
         const idCard = document.createElement("div");
         idCard.style.display = "flex";
@@ -161,15 +163,17 @@
         frontCard.style.background = `url('${frontImage}') no-repeat center center`;
         frontCard.style.backgroundSize = "contain";
         frontCard.innerHTML = `
-        <p class="text " style="position: absolute; top: 47px; left: 420px;">Card No:  <strong>${cardNo}</strong> </p>
-        <p class="text name" style="position: absolute; top: 160px; left: 30px;">Name:  <strong>${name}</strong> </p>
-        <p class="text iqama" style="position: absolute; top: 190px; left: 30px;">Company:  <strong>${company}</strong> </p>
-        <p class="text issue" style="position: absolute; top: 220px; left: 30px;">ID No.:   <strong>${iqama}</strong></p>
-        <p class="text expiry" style="position: absolute; top: 250px; left: 30px;">Issue Date:  <strong>${formattedIssueDate}</strong> </p>
-        <p class="text company" style="position: absolute; top: 280px; left: 30px;">Expiry Date:  <strong>${formattedExpiryDate}</strong> </p>
-        <p class="text designation" style="position: absolute; top: 310px; left: 400px; font-weight: bold;">  ${trade}</p>
+        <p class="text " style="position: absolute; top: 48px; left: 405px;">Card No:  <strong>${cardNo}</strong> </p>
+        <img src="${logo}" style="position: absolute; top: 40px; left: 35px; width: 280px;" />
+        <p class="text name" style="position: absolute; top: 180px; left: 30px;">Name:  <strong>${name}</strong> </p>
+        <p class="text iqama" style="position: absolute; top: 210px; left: 30px;">Iqama No.:  <strong>${iqama}</strong> </p>
+        <p class="text issue" style="position: absolute; top: 240px; left: 30px;">Issue Date:   <strong>${formattedIssueDate}</strong></p>
+        <p class="text expiry" style="position: absolute; top: 270px; left: 30px;">Expiry Date:  <strong>${formattedExpiryDate}</strong> </p>
+        <p class="text company" style="position: absolute; top: 300px; left: 30px;">Company:  <strong>${company}</strong> </p>
+        <p class="text designation" style="position: absolute; top: 330px; left: 290px; font-weight: bold;">  ${trade}</p>
         <img src="${profileUrl}" style="position: absolute; top: 128px; right: 33px; width: 148px; height: 177px; border: 1px solid #000;" />
-        <img src="${qrrImage}" style="position: absolute; bottom: 98px; right: 191px; width: 76px;" />
+        <img src="${qrrImage}" style="position: absolute; bottom: 87px; right: 191px; width: 86px;" />
+        
     `;
 
         // Create back card
@@ -180,7 +184,7 @@
         backCard.style.background = `url('${backImage}') no-repeat center center`;
         backCard.style.backgroundSize = "contain";
         backCard.innerHTML = `
-        <p class="text info" style="position: absolute; top: 18px; left: 25px; font-weight: normal; color: white; width: 550px; word-spacing: 5px; text-align: justify; font-size: 17px;line-height:20px;">
+        <p class="text info" style="position: absolute; top: 18px; left: 25px; font-weight: normal; color: white; width: 550px; word-spacing: 0px; text-align: justify; font-size: 19px;line-height:20px;">
             The holder of this card has successfully completed the training on safety and safe operation. He is approved / Certified after assessment listed on the front side.
         </p>
         <img src="${qrrImage}" style="position: absolute; bottom: 161px; right: 295px; width: 95px;" />
