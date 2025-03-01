@@ -97,8 +97,8 @@
                     '{% if certificate.profile %}{{ certificate.profile.url }}{% else %}{% static 'images/default_profile.png' %}{% endif %}',
                     '{% static 'img/qrr.png' %}',
                     '{% static 'img/front.png' %}',
-                    '{% static 'img/back.jpg' %}',
-                    '{% static 'img/logotov.png'%}'
+                    '{% static 'img/image.png' %}',
+                    '{% static 'img/logotov.png'%}','{% static 'img/left.png'%}','{% static 'img/right.png'%}'
                 )"
             >
               Download
@@ -139,7 +139,7 @@
         qrrImage,
         frontImage,
         backImage,
-        logo
+        logo,leftImage,rightImage
       ) {
         const idCard = document.createElement("div");
         idCard.style.display = "flex";
@@ -184,11 +184,19 @@
         backCard.style.background = `url('${backImage}') no-repeat center center`;
         backCard.style.backgroundSize = "contain";
         backCard.innerHTML = `
-        <p class="text info" style="position: absolute; top: 18px; left: 25px; font-weight: normal; color: white; width: 550px; word-spacing: 0px; text-align: justify; font-size: 19px;line-height:20px;">
+        <p class="text info" style="position: absolute; top: 21px; left: 25px; font-weight: normal; color: white; width: 550px; word-spacing: 0px; text-align: justify; font-size: 19px;line-height:20px;">
             The holder of this card has successfully completed the training on safety and safe operation. He is approved / Certified after assessment listed on the front side.
         </p>
-        <img src="${qrrImage}" style="position: absolute; bottom: 161px; right: 295px; width: 95px;" />
+         <p class="" style="position: absolute; top: 95px; left: 170px; font-weight: normal; color: black; width: 590px;word-spacing:0px; font-size: 16px;">
+          This is not a Government License
+        </p>
+        <img src="${qrrImage}" style="position: absolute; bottom: 161px; right: 302px; width: 95px;" />
         <p class="text" style="position: absolute; top: 290px; left: 70px; font-weight: bold;">  ${underCard}</p>
+        <img src="${leftImage}" style="position: absolute; top: 125px; left: 12px; width: 185px;" />
+        <p class="" style="position: absolute; top: 350px; left: 15px; font-weight: normal; color: black; width: 590px;word-spacing:0px; font-size: 10px;">
+            <i><b>Disclaimer:</b> Tove Leeds has no liability for any errors committed by the holder of this card whilst attending the categorised duty.</i> 
+        </p>
+        <img src="${rightImage}" style="position: absolute; top: 120px; right: 40px; width: 200px;" />
     `;
 
         // Append both to the hidden container
@@ -216,5 +224,7 @@
         });
       }
     </script>
+    
+    
   </body>
 </html>
