@@ -29,23 +29,25 @@
       .designation {
         font-family: "Times New Roman", Times, serif;
       }
-      strong{
-        font-family: 'Times New Roman', Times, serif;
+      strong {
+        font-family: "Times New Roman", Times, serif;
         font-size: 20px;
       }
     </style>
   </head>
 
   <body class="container mt-4">
-    <li class="nav-item">
-              {% if user.is_authenticated %}
-              <a class="nav-link" href="{% url 'certificate_form' %}">Add Certificate</a>
-                <a class="nav-link" href="{% url 'logout' %}">Logout</a>
-              {% else %}
-                <a class="nav-link" href="{% url 'login' %}">Login</a>
-              {% endif %}
-            </li>
-    <h2 class="mb-4">All Certificate Records</h2>
+    <div class="mt-3 d-flex justify-content-between">
+      {% if user.is_authenticated %}
+      <a href="{% url 'certificate_form' %}" class="btn btn-warning"
+        >Add Certificate</a
+      >
+      <a href="{% url 'logout' %}" class="btn btn-danger">Logout</a>
+      {% else %}
+      <a href="{% url 'login' %}" class="btn btn-primary w-100">Login</a>
+      {% endif %}
+    </div>
+    <h2 class="mb-4 mt-4">All Certificate Records</h2>
 
     <table class="table table-bordered table-striped table-responsive">
       <thead>
@@ -59,8 +61,8 @@
           <th>Issue Date</th>
           <th>Expiry Date</th>
           <th>Profile</th>
-          <th>Undercard</th>
-          
+          <!-- <th>Undercard</th> -->
+
           <th>Action</th>
         </tr>
       </thead>
@@ -73,8 +75,8 @@
           <td>{{ certificate.company }}</td>
           <td>{{ certificate.operator_trade }}</td>
           <td>{{ certificate.iqama_number }}</td>
-          <td>{{ certificate.issue_date }}</td>
-          <td>{{ certificate.expiry_date }}</td>
+          <td>{{ certificate.issue_date|date:"d/m/Y" }}</td>
+          <td>{{ certificate.expiry_date|date:"d/m/Y" }}</td>
 
           <td>
             {% if certificate.profile %}
@@ -86,13 +88,13 @@
 
             {% else %} No Image {% endif %}
           </td>
-          <td>{{ certificate.undercard|default:"N/A" }}</td>
+          <!-- <td>{{ certificate.undercard|default:"N/A" }}</td> -->
           <!-- <td>{{ certificate.remarks|default:"No Remarks" }}</td> -->
 
           <!-- Only the Download Button is Visible -->
           <td>
             <button
-              class="btn btn-dark download-btn"
+              class="btn btn-dark btn-sm download-btn"
               onclick="downloadCardAsPDF(
                     '{{ certificate.card_no }}',
                     '{{ certificate.operator_name }}',
@@ -147,7 +149,9 @@
         qrrImage,
         frontImage,
         backImage,
-        logo,leftImage,rightImage
+        logo,
+        leftImage,
+        rightImage
       ) {
         const idCard = document.createElement("div");
         idCard.style.display = "flex";
@@ -201,7 +205,7 @@
         <img src="${qrrImage}" style="position: absolute; bottom: 161px; right: 302px; width: 95px;" />
         <p class="text" style="position: absolute; top: 290px; left: 70px; font-weight: bold;">  ${underCard}</p>
         <img src="${leftImage}" style="position: absolute; top: 125px; left: 12px; width: 185px;" />
-        <p class="" style="position: absolute; top: 350px; left: 15px; font-weight: normal; color: black; width: 590px;word-spacing:0px; font-size: 10px;">
+        <p class="" style="position: absolute; top: 350px; left: 18px; font-weight: normal; color: black; width: 590px;word-spacing:-1px; font-size: 9.5px;">
             <i><b>Disclaimer:</b> Tove Leeds has no liability for any errors committed by the holder of this card whilst attending the categorised duty.</i> 
         </p>
         <img src="${rightImage}" style="position: absolute; top: 120px; right: 40px; width: 200px;" />
@@ -232,7 +236,5 @@
         });
       }
     </script>
-    
-    
   </body>
 </html>

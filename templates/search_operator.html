@@ -67,8 +67,8 @@
                         <td>{{ certificate.company }}</td>
                         <td>{{ certificate.operator_trade }}</td>
                         <td>{{ certificate.iqama_number }}</td>
-                        <td>{{ certificate.issue_date }}</td>
-                        <td>{{ certificate.expiry_date }}</td>
+                        <td>{{ certificate.issue_date|date:"d/m/Y" }}</td>
+                        <td>{{ certificate.expiry_date|date:"d/m/Y" }}</td>
                         <td class="text-left tick-sign">
                         
                                 <i class="fa-solid fa-check text-success"></i>
