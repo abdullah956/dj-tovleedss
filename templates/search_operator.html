@@ -14,22 +14,110 @@
     
     <style>
         body {
-            font-family: 'Mulish', Arial, Helvetica, sans-serif;
+            font-family: "Mulish", Arial, Helvetica, sans-serif;
+            background-color: #ffffff;
+            color: #333;
         }
         .logo {
-            width: 360px;
-            margin: 20px auto;
+            width: 120px;
+            margin: 40px auto 20px auto;
+            display: block;
         }
-        table {
-            width: 100%;
+        h2 {
+            font-size: 2.2rem;
+            font-weight: 600;
+            margin-bottom: 40px;
+            text-align: center;
+        }
+        
+        /* Desktop/Base Table Styling */
+        .table-container {
+            max-width: 1200px;
             margin: auto;
-            text-align: left;
+            padding: 0 15px;
         }
-        thead{
-            border-bottom: 2px solid rgb(208, 208, 208);
+        .table {
+            width: 100%;
+            margin-bottom: 0;
+            border-collapse: collapse;
+            border: 1px solid #e0e0e0;
+        }
+        .table th, .table td {
+            padding: 15px;
+            border: 1px solid #e0e0e0;
+            text-align: left;
+            vertical-align: middle;
+        }
+        .table th {
+            font-weight: bold;
+            text-transform: uppercase;
+            background-color: #fcfcfc;
+            font-size: 0.9rem;
         }
         .btn-back {
-            margin-top: 20px;
+            margin: 30px auto;
+            display: block;
+            background-color: #007bff;
+            border: none;
+            padding: 10px 40px;
+            border-radius: 5px;
+            font-size: 1.1rem;
+            width: fit-content;
+            color: white;
+            text-decoration: none;
+        }
+        .btn-back:hover {
+            background-color: #0056b3;
+            color: white;
+        }
+
+        /* Responsive Mobile Layout (matches image exactly) */
+        @media screen and (max-width: 768px) {
+            .table-container {
+                max-width: 350px;
+                padding: 0; /* Remove padding to let table define outlines */
+            }
+            .table thead {
+                display: none;
+            }
+            .table, .table tbody, .table tr {
+                display: block;
+                width: 100%;
+                border: none;
+            }
+            .table tr {
+                margin-bottom: 40px;
+                border: 1px solid #7d7d7d;
+            }
+            .table td {
+                display: grid;
+                grid-template-columns: 45% 55%;
+                padding: 0;
+                border: none;
+                border-bottom: 1px solid #7d7d7d;
+                align-items: center;
+            }
+            .table td:last-child {
+                border-bottom: none;
+            }
+            .table td::before {
+                content: attr(data-label);
+                padding: 12px 15px;
+                font-weight: bold;
+                text-transform: uppercase;
+                color: #000;
+                border-right: 1px solid #7d7d7d;
+                font-size: 0.85rem;
+                height: 100%;
+                display: flex;
+                align-items: center;
+            }
+            .td-value {
+                padding: 12px 15px;
+                font-size: 1rem;
+                display: flex;
+                align-items: center;
+            }
         }
     </style>
 </head>
@@ -40,14 +128,14 @@
         <img src="{% static 'img/toveleeds-big.png' %}" alt="Logo" class="logo">
         
         <!-- Title -->
-        <h2 class="mb-3">Tove Leeds App</h2>
+        <h2 class="mb-4">Tove Leeds App</h2>
     </div>
 
     <!-- Table -->
     <div class="container-fluid">
-        <div class="table-responsive">
-            <table class="table table-bordered text-left">
-                <thead class="table-white">
+        <div class="table-container">
+            <table class="table table-bordered">
+                <thead>
                     <tr>
                         <th>CARD NO</th>
                         <th>OPERATOR NAME</th>
@@ -60,19 +148,19 @@
                     </tr>
                 </thead>
                 <tbody>
-                    {% for  certificate in certificates %}
+                    {% for certificate in certificates %}
                     <tr>
-                        <td class="text-dark">{{ certificate.card_no }}</td>
-                        <td>{{ certificate.operator_name }}</td>
-                        <td>{{ certificate.company }}</td>
-                        <td>{{ certificate.operator_trade }}</td>
-                        <td>{{ certificate.iqama_number }}</td>
-                        <td>{{ certificate.issue_date|date:"d/m/Y" }}</td>
-                        <td>{{ certificate.expiry_date|date:"d/m/Y" }}</td>
-                        <td class="text-left tick-sign">
-                        
+                        <td data-label="CARD NO"><span class="td-value">{{ certificate.card_no }}</span></td>
+                        <td data-label="OPERATOR NAME"><span class="td-value">{{ certificate.operator_name }}</span></td>
+                        <td data-label="COMPANY"><span class="td-value">{{ certificate.company }}</span></td>
+                        <td data-label="OPERATOR TRADE"><span class="td-value">{{ certificate.operator_trade }}</span></td>
+                        <td data-label="IQAMA NUMBER"><span class="td-value">{{ certificate.iqama_number }}</span></td>
+                        <td data-label="ISSUE DATE"><span class="td-value">{{ certificate.issue_date|date:"d/m/Y" }}</span></td>
+                        <td data-label="EXPIRY DATE"><span class="td-value">{{ certificate.expiry_date|date:"d/m/Y" }}</span></td>
+                        <td data-label="REMARKS">
+                            <span class="td-value">
                                 <i class="fa-solid fa-check text-success"></i>
-                         
+                            </span>
                         </td>
                     </tr>
                     {% endfor %}
@@ -80,7 +168,7 @@
             </table>
         </div>
 
-        <div class="container justify-content-center text-center">
+        <div class="text-center">
             <!-- Back Button -->
             <a href="{% url 'track_operator' %}" class="btn btn-primary btn-back">Back</a>
         </div>
